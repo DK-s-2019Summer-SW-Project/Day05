@@ -1,0 +1,40 @@
+//컴퓨터와사용자가 한번씩 번갈아 가면서 숫자를 입력하여 최초로 100을 넘기면 승리하는 게임 만들기
+// 컴퓨터와 사용자가 입력할 숫자는 1~10으로 제한을 하며 한번 입력한 숫자는 다시 사용 할 수 없도록 제한. 컴퓨터가 먼저 입력을 실행한다.
+// 자신의 차례가 왔었을 때 100이상이면 승리, 한번 사용한 숫자를 확인하는 작업이 필요하다. 
+#include<stdio.h>
+#define _CRT_SECURE_NO_WARNNINGS
+#include<stdlib.h> // 난수를 사용하기 위한 배열
+#include<time.h>
+int flage[10];
+int main()
+{
+	int user = 0, total = 0, i, sum = 0, computer = 0;
+	srand(time(NULL));
+	while (total < 100)
+	{
+		for (i = 0; i < 10; i++)
+		{
+			printf("insert fo the user: ");
+			scanf_s("%d", &user);
+			computer = rand() % 10+1;
+			if (flage[computer])
+				continue;
+			printf("insert of the computer: %d\n", computer);
+			flage[computer] = 10;
+			sum = user + computer;
+			total += sum;
+			printf("the sum is %d\n", sum);
+			printf("the toal is %d\n", total);
+		}
+		printf("the winner is ");
+	}
+	
+	return 0;
+}
+
+
+// 사용자의 입력을 위한 변수가 필요, 연산을 돌리기 위한 변수 필요, 총합을 저장하는 변수 필요, 컴퓨터가 입력하는 변수가 필요하다--> 변수는 총 4개가 필요하다
+// for문을 사용하여 루프를 돌릴 예정 범위는 10이하로. 
+// 난수를 사용하여 컴퓨터가 일정한 값을 출력을 해야 한다. --> 해결
+// 배열로 받아야 하는지 아니면 그냥 숫자를 돌려야 하는지 고민.
+// 가장 문제는 어떻게 입력 받은 숫자를 인식 시키는가가 가장 큰 문제. --> 이거 해결
